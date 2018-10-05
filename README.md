@@ -59,16 +59,26 @@ output "workstations_public_dns" {
 
 ConvergDB workstations provide access to the instance by way of [wetty](https://github.com/krishnasrinivas/wetty) (web TTY)... a node application which serves up a TTY based terminal, all within a browser page.
 
-When a workstation is instantiated... a self-signed TLS certificate is created. This will raise an error/warning when you access the page... but it does encrypt the traffic, even if it's not validating the server.
-
 In order to access the terminal... connect to:
 
 ```
 https://workstation-hostname:3000/wetty
 ```
 
+### Insecure certificate red flags and warnings in your browser
+
+At this point you will see all kinds of red flags and warnings about the site being insecure because the cert is self signed. Go ahead and "proceed anyway" because this unsigned cert provides encryption for the data in transit. Regardless... no actual end user data will be transmitted over this socket, only the commands from your terminal session.
+
+### Username and password
+
 * default username = `convergdb`
 * default password = `convergdb`
+
+Use the linux `passwd` command to change the password.
+
+### Use source control!
+
+While you could leave this instance up and running forever... it is advised that you check your work into a git repository. The instance has git configured to connect to CodeCommit via https without any additional setup.
 
 ## License
 
