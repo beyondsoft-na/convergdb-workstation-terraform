@@ -39,7 +39,7 @@ data "aws_region" "current" {}
 
 module "workstations" {
   source         = "./convergdb_workstations/"
-  instance_count = 15
+  instance_count = 1
   instance_type  = "t3.small"
   region         = "${data.aws_region.current.name}"
   vpc_id         = "vpc-00000000"
